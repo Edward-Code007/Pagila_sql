@@ -52,7 +52,10 @@ drop table horror_backup;
 
 -- 31. Sube en 1 día el rental_duration de todas las películas cuya duración (length)
 --     sea mayor a 120 minutos.
-
+begin;
+update film f set f.rental_duration = f.rental_duration + 1
+where f.length > 120;
+rollback
 
 -- 32. Usando UPDATE con CASE, ajusta el rental_rate: las películas 'G' suben 10%,
 --     las 'PG' suben 5%, y el resto se queda igual (pista: CASE dentro del SET).
